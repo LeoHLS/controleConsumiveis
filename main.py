@@ -1,7 +1,9 @@
 from functions import *
+import lists
 
+title('Sistema de Controle de Consumíveis')
 
-
-
-alterar()
-lista_consumiveis()
+while True:
+    menuAcess()
+    userQuit('Deseja acessar mais alguma função?')
+    
