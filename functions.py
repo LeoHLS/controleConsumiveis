@@ -18,7 +18,7 @@ def title(title):
 
 
 def lista_consumiveis():
-    a = cursor.execute('select * from consumiveis ORDER BY quantidade')
+    a = cursor.execute('select * from consumiveis')
     headers = ['ID', 'NOME', 'QUANTIDADE']
     data = []
     id = -1
@@ -37,11 +37,11 @@ def lista_consumiveis():
 
 def updateAmount(op, quant):
     lista = list(cursor.execute('select * from consumiveis'))
-    quant += lista[op][1]
+    newQuant = quant + lista[op][1]
     alterar = lista[op][0]
-    cursor.execute(f'update consumiveis set quantidade = {quant} where nome = "{alterar}"')
+    cursor.execute(f'update consumiveis set quantidade = {newQuant} where nome = "{alterar}"')
     connection.commit()
-
+    print(f'Foram adicionados {quant} consumíveis em {lista[op][0]} - TOTAL: {newQuant}')
 
 def delReg(op):
     lista = list(cursor.execute('select * from consumiveis'))
